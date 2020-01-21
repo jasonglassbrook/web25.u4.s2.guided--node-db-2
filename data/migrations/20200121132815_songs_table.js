@@ -1,6 +1,6 @@
 
 exports.up = function (knex) {
-  return knex.schema.createTable ('songs', (table) => {
+  return knex.schema.createTable ('Songs', (table) => {
     table
       .uuid ('Id')
       .primary ()
@@ -24,5 +24,5 @@ exports.up = function (knex) {
 }
 
 exports.down = function (knex) {
-
+  return knex.schema.dropTableIfExists ('Songs')
 }
