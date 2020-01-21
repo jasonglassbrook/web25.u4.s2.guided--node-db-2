@@ -1,20 +1,15 @@
 const express = require('express');
 const knex = require('knex');
+const dbConfig = require('../knexfile')
 
-const db = knex({
-  client: 'sqlite3',
-  connection: {
-    filename: './data/produce.db3'
-  },
-  useNullAsDefault: true
-});
+const db = knex(dbConfig.development);
 
 const router = express.Router();
 
 router.get('/', (req, res) => {
   db('fruits')
   .then(fruits => {
-    res.json(fruits); 
+    res.json(fruits);
   })
   .catch (err => {
     res.status(500).json({ message: 'Failed to retrieve fruits' });
@@ -27,7 +22,7 @@ router.get('/:id', (req, res) => {
   db('fruits').where({ id }).first()
   .then(fruit => {
     res.json(fruit);
-  }) 
+  })
   .catch (err => {
     res.status(500).json({ message: 'Failed to retrieve fruit' });
   });
