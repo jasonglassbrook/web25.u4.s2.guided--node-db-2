@@ -1,8 +1,8 @@
 
-exports.up = function(knex) {
-  
-};
+exports.up = function (knex) {
 
-exports.down = function(knex) {
-  
-};
+}
+
+exports.down = function (knex) {
+
+}
